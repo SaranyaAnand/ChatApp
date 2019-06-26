@@ -15,7 +15,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginSample extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
     private TextView txtDetails;
@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_login_sample);
 
         // Displaying toolbar icon
         getSupportActionBar().setDisplayShowHomeEnabled(true);

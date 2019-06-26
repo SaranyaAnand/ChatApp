@@ -5,46 +5,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Chat.LoginActivity"
+    tools:context=".Chat.RegisterActivity"
+    android:gravity="center_vertical"
     android:orientation="vertical"
-    android:paddingTop="100dp"
-    android:paddingLeft="30dp"
-    android:paddingRight="30dp">
+    android:padding="16dp">
+
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Chat App"
-        android:textSize="30dp"
-        android:gravity="center"
-        android:layout_marginBottom="20dp"/>
+        android:text="Register new account" />
+
     <EditText
+        android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/username"
-        android:inputType="text"
-        android:maxLines="1"
-        android:hint="enter username"
-        android:layout_marginBottom="10dp"/>
+        android:hint="Email" />
+
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/password"
-        android:inputType="textPassword"
-        android:maxLines="1"
-        android:hint="enter password"
-        android:layout_marginBottom="10dp"/>
-    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login"
-        android:id="@+id/loginButton"
-        android:layout_marginBottom="20dp"/>
+        android:hint="Password"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Register" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Click here to register"
+        android:text="Click here to login"
         android:textSize="20dp"
         android:gravity="center"
-        android:id="@+id/register"/>
+        android:id="@+id/login"/>
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
 </LinearLayout>
