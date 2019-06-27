@@ -127,6 +127,7 @@ public class ChatActivity extends AppCompatActivity {
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
                 startActivity(getIntent());
+                finish();
                 /*for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     String message = snapshot.getValue().toString();
                     Log.d("message updated", "message: " + message); //log
