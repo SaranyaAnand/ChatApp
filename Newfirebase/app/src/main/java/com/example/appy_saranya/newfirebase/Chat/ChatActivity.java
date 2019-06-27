@@ -81,8 +81,8 @@ public class ChatActivity extends AppCompatActivity {
         });*/
 
         Firebase.setAndroidContext(this);
-        reference1 = new Firebase("https://newfirebase-add84.firebaseio.com/messages/" + UserDetails.username + "_" + UserDetails.chatWith);
-        reference2 = new Firebase("https://newfirebase-add84.firebaseio.com/messages/" + UserDetails.chatWith + "_" + UserDetails.username);
+        reference1 = new Firebase("https://newfirebase-add84.firebaseio.com/messages/" + UserDetails.username + "_" + UserDetails.chatWith + "_" + UserDetails.time);
+        reference2 = new Firebase("https://newfirebase-add84.firebaseio.com/messages/" + UserDetails.chatWith + "_" + UserDetails.username + "_" + UserDetails.time);
 
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,20 +108,20 @@ public class ChatActivity extends AppCompatActivity {
                 Map map = dataSnapshot.getValue(Map.class);
                 String message = map.get("message").toString();
                 String userName = map.get("user").toString();
-              //  String time = map.get("time").toString();
+                String time = map.get("time").toString();
 
-                /*if(userName.equals(UserDetails.username)){
+                if(userName.equals(UserDetails.username)){
                     addMessageBox("You " , message,time, 1);
                 }
                 else{
                     addMessageBox(UserDetails.chatWith , message,time, 2);
-                }*/
+                }
 
-                if (userName.equals(UserDetails.username)) {
+                /*if (userName.equals(UserDetails.username)) {
                     addMessageBox("You:-\n" + message, 1);
                 } else {
                     addMessageBox(UserDetails.chatWith + ":-\n" + message, 2);
-                }
+                }*/
             }
 
             @Override
@@ -152,7 +152,7 @@ public class ChatActivity extends AppCompatActivity {
         });
     }
 
-    public void addMessageBox(String message, int type){
+    /*public void addMessageBox(String message, int type){
         TextView textView = new TextView(ChatActivity.this);
         textView.setText(message);
 
@@ -170,9 +170,9 @@ public class ChatActivity extends AppCompatActivity {
         textView.setLayoutParams(lp2);
         layout.addView(textView);
         scrollView.fullScroll(View.FOCUS_DOWN);
-    }
+    }*/
 
-   /* public void addMessageBox(String name,String message,String time, int type){
+    public void addMessageBox(String name,String message,String time, int type){
 
         TextView textmsg = new TextView(ChatActivity.this);
         TextView textname = new TextView(ChatActivity.this);
@@ -207,7 +207,7 @@ public class ChatActivity extends AppCompatActivity {
         layout.addView(textmsg);
         layout.addView(texttime);
         scrollView.fullScroll(View.FOCUS_DOWN);
-    }*/
+    }
 
     }
 
