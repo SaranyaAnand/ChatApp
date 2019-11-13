@@ -37,8 +37,6 @@ public class MainActivity extends AppCompatActivity {
     String user, pass;
     TextView login;
 
-
-
     EditText editText;
     Button submit,fetch,nextPage;
     DatabaseReference rootRef,demoRef;
@@ -199,7 +197,9 @@ public class MainActivity extends AppCompatActivity {
 ////            }
 ////        });
     }
-
+    public static void get(){
+        
+    }
 
     }
 

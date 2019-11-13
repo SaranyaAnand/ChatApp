@@ -40,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
     private String userId;
+    Button btn_login_google;
     FirebaseAuth.AuthStateListener mAuthListner;
 
     @Override
@@ -61,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
         ed_password =  findViewById(R.id.ed_password);
         btn_login =  findViewById(R.id.btn_login);
         btn_signin =  findViewById(R.id.btn_signin);
+        btn_login_google = findViewById(R.id.btn_login_google);
         //progressBar = findViewById(R.id.progressBar);
 
        // mFirebaseInstance = FirebaseDatabase.getInstance();
@@ -89,7 +91,12 @@ public class LoginActivity extends AppCompatActivity {
 //                Log.e(TAG, "Failed to read app title value.", error.toException());
 //            }
 //        });
-
+        btn_login_google.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(LoginActivity.this, "HELOOOO", Toast.LENGTH_LONG).show();
+            }
+        });
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -69,6 +69,15 @@
         android:text="Create new account"
         android:textAllCaps="false"
         android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/btn_login_google"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dip"
+                android:background="#000000"
+                android:text="Sign in with google"
+                android:textColor="#838383" />
         </LinearLayout>
 
 
