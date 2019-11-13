@@ -1,7 +1,6 @@
 package com.example.appy_saranya.newfirebase.Chat;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.TypedValue;
@@ -11,27 +10,21 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
-
 import com.example.appy_saranya.newfirebase.R;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -44,8 +37,8 @@ public class ChatActivity extends AppCompatActivity {
     ScrollView scrollView;
     Firebase reference1, reference2;
     SimpleDateFormat sdf;
-    DatabaseReference ref;
-
+    FirebaseDatabase mDatabase;
+    DatabaseReference mDbRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,26 +52,6 @@ public class ChatActivity extends AppCompatActivity {
         sendButton = (ImageView) findViewById(R.id.sendButton);
         messageArea = (EditText) findViewById(R.id.messageArea);
         scrollView = (ScrollView) findViewById(R.id.scrollView);
-
-        /*ref= FirebaseDatabase.getInstance().getReference().child("messages");
-        ref.orderByChild("message").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    for (com.google.firebase.database.DataSnapshot datas : dataSnapshot.getChildren()) {
-                        String key=datas.getKey();
-                        String message=datas.child("message").getValue().toString();
-                        ref.child(key).child("message").setValue(message);
-
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });*/
 
         Firebase.setAndroidContext(this);
         reference1 = new Firebase("https://newfirebase-add84.firebaseio.com/messages/" + UserDetails.username + "_" + UserDetails.chatWith + "_" + UserDetails.time);
@@ -117,23 +90,22 @@ public class ChatActivity extends AppCompatActivity {
                     addMessageBox(UserDetails.chatWith , message,time, 2);
                 }
 
-                /*if (userName.equals(UserDetails.username)) {
-                    addMessageBox("You:-\n" + message, 1);
-                } else {
-                    addMessageBox(UserDetails.chatWith + ":-\n" + message, 2);
-                }*/
             }
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
                 startActivity(getIntent());
                 finish();
-                /*for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String message = snapshot.getValue().toString();
-                    Log.d("message updated", "message: " + message); //log
+                String message = dataSnapshot.getValue().toString();
+                Log.d("message updated", "message: " + message);
 
-                }*/
+//                if (dataSnapshot.getKey().equals("message")) {
+//                    String messages = dataSnapshot.getValue(String.class);
+//                }
+
             }
+
+
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
@@ -151,26 +123,6 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
     }
-
-    /*public void addMessageBox(String message, int type){
-        TextView textView = new TextView(ChatActivity.this);
-        textView.setText(message);
-
-        LinearLayout.LayoutParams lp2 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        lp2.weight = 1.0f;
-
-        if(type == 1) {
-            lp2.gravity = Gravity.RIGHT;
-            textView.setBackgroundResource(R.drawable.bubble_in);
-        }
-        else{
-            lp2.gravity = Gravity.LEFT;
-            textView.setBackgroundResource(R.drawable.bubble_out);
-        }
-        textView.setLayoutParams(lp2);
-        layout.addView(textView);
-        scrollView.fullScroll(View.FOCUS_DOWN);
-    }*/
 
     public void addMessageBox(String name,String message,String time, int type){
 
